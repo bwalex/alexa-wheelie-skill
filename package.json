@@ -1,0 +1,40 @@
+{
+  "name": "alexa-wheelie-skill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/*.js",
+    "build": "NODE_ENV=production webpack --config webpack.config.js --progress --profile --colors",
+    "build-dev": "NODE_ENV=development webpack --config webpack.config.js --progress --profile --colors",
+    "dist": "npm run build && node scripts/build.js",
+    "dist-dev": "npm run build-dev && node scripts/build.js",
+    "lint": "eslint --ext js --ext jsx src || exit 0",
+    "gen": "node scripts/build.js"
+  },
+  "author": "dlt.io",
+  "license": "MIT",
+  "dependencies": {
+    "alexa-app": "^2.3.4",
+    "axios": "^0.15.3",
+    "cheerio": "^0.22.0",
+    "es6-promise": "^4.0.5",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1"
+  },
+  "devDependencies": {
+    "archiver": "^1.3.0",
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "tap": "^8.0.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0"
+  }
+}
