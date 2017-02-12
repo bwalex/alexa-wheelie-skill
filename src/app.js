@@ -1,11 +1,28 @@
 import moment from 'moment';
 import alexa from 'alexa-app';
-import {fetch} from './backend';
+import v1Fetch from './backend/v1';
+import v2Fetch from './backend/v2';
 
 let app = new alexa.app("wheelie");
 
 function respond(alexa, num) {
-  fetch()
+  let p = null
+
+  if (process.env.WHEELIE_VERSION === "1") {
+    p = v1Fetch({
+      uprn: process.env.WHEELIE_UPRN,
+      address: process.env.WHEELIE_ADDRESS,
+      postcode: process.env.WHEELIE_POSTCODE,
+    })
+  } else {
+    p = v2Fetch({
+      uprn: process.env.WHEELIE_UPRN,
+      address: process.env.WHEELIE_ADDRESS,
+      postcode: process.env.WHEELIE_POSTCODE,
+    })
+  }
+
+  p
     .then((collections) => {
       if (collections.length == 0) {
         alexa.say("Collection information is not available");
