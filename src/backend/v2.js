@@ -19,7 +19,7 @@ export default function v2Fetch(opts) {
       params: params,
     })
       .then((response) => {
-        resolve(v2Parse(response.data));
+        resolve(v2Parse(response.data, new Date()));
       })
       .catch((error) => {
         console.log(error);
