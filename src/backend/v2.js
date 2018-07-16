@@ -4,7 +4,8 @@ import v2Parse from '../parser/v2';
 export default function v2Fetch(opts) {
   const uprn = opts.uprn,
     addr = opts.address,
-    postcode = opts.postcode;
+    postcode = opts.postcode,
+    url = opts.url || "https://www.cambridge.gov.uk/binfeed.ical";
 
   return new Promise((resolve, reject) => {
     let params = {};
@@ -15,7 +16,7 @@ export default function v2Fetch(opts) {
       reject("A UPRN is required for the v2 backend")
     }
 
-    axios.get("https://www.cambridge.gov.uk/binfeed.ical", {
+    axios.get(url, {
       params: params,
     })
       .then((response) => {

@@ -19,6 +19,7 @@ function respond(alexa, num) {
       uprn: process.env.WHEELIE_UPRN,
       address: process.env.WHEELIE_ADDRESS,
       postcode: process.env.WHEELIE_POSTCODE,
+      url: process.env.WHEELIE_URL
     })
   }
 
